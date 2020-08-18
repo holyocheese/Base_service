@@ -1,0 +1,47 @@
+spring:
+  redis:
+    host: 127.0.0.1
+    port: 6379
+    timeout: 20000
+    pool:
+      maxIdle: 300
+      minIdle: 100
+      max-active: 200
+      max-wait: 20000
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    platform: mysql
+    url: jdbc:mysql://localhost:3306/osaka?useUnicode=true&characterEncoding=UTF-8
+    username: root
+    password: 123456
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+    time-zone: GMT+8
+
+server:
+  port: 8085
+
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:9000/eureka/
+      
+path:
+  appPath: D:\cheese java\osaka\base_service_data\app\
+  firmwarePath: D:\cheese java\osaka\base_service_data\firmware\
+  log: D:\cheese java\osaka\base_service_data\log\
+
+
+#####################################################################################################
+#spring boot health config
+management:
+  security:
+    enabled: false
+endpoints:
+  health:
+    sensitive: false
+#####################################################################################################
+
+
+

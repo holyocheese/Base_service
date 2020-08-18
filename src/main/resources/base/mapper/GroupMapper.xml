@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.base.dao.mapper.GroupMapper" >
+  <resultMap id="BaseResultMap" type="com.base.dao.entity.Group" >
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="code" property="code" jdbcType="VARCHAR" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="parent_id" property="parentId" jdbcType="INTEGER" />
+    <result column="path" property="path" jdbcType="VARCHAR" />
+    <result column="type" property="type" jdbcType="CHAR" />
+    <result column="group_type" property="groupType" jdbcType="INTEGER" />
+    <result column="description" property="description" jdbcType="VARCHAR" />
+    <result column="crt_time" property="crtTime" jdbcType="TIMESTAMP" />
+    <result column="crt_user" property="crtUser" jdbcType="VARCHAR" />
+    <result column="crt_name" property="crtName" jdbcType="VARCHAR" />
+    <result column="crt_host" property="crtHost" jdbcType="VARCHAR" />
+    <result column="upd_time" property="updTime" jdbcType="TIMESTAMP" />
+    <result column="upd_user" property="updUser" jdbcType="VARCHAR" />
+    <result column="upd_name" property="updName" jdbcType="VARCHAR" />
+    <result column="upd_host" property="updHost" jdbcType="VARCHAR" />
+    <result column="attr1" property="attr1" jdbcType="VARCHAR" />
+    <result column="attr2" property="attr2" jdbcType="VARCHAR" />
+    <result column="attr3" property="attr3" jdbcType="VARCHAR" />
+    <result column="attr4" property="attr4" jdbcType="VARCHAR" />
+    <result column="attr5" property="attr5" jdbcType="VARCHAR" />
+    <result column="attr6" property="attr6" jdbcType="VARCHAR" />
+    <result column="attr7" property="attr7" jdbcType="VARCHAR" />
+    <result column="attr8" property="attr8" jdbcType="VARCHAR" />
+  </resultMap>
+  <delete id="deleteGroupMembersById">
+      delete from base_group_member where group_id = #{groupId}
+  </delete>
+  <delete id="deleteGroupLeadersById">
+    delete from base_group_leader where group_id = #{groupId}
+  </delete>
+  <insert id="insertGroupMembersById">
+    insert into base_group_member (
+       group_id,user_id
+    )
+    values(
+       #{groupId},#{userId}
+    )
+  </insert>
+  <insert id="insertGroupLeadersById">
+    insert into base_group_leader (
+       group_id,user_id
+    )
+    values(
+       #{groupId},#{userId}
+    )
+  </insert>
+  <select id="selectGroupListByUserMember" resultMap="BaseResultMap" parameterType="object">
+  	select 
+  		*
+  		from base_group where id IN 
+  		(
+  			select group_id from base_group_member where user_id = #{userId}
+  		)
+   </select>
+   
+   <select id="selectGroupListByUserLeader" resultMap="BaseResultMap" parameterType="object">
+  	select 
+  		*
+  		from base_group where id IN 
+  		(
+  			select group_id from base_group_leader where user_id = #{userId}
+  		)
+   </select>
+</mapper>

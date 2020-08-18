@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.base.dao.mapper.MenuMapper" >
+  <resultMap id="BaseResultMap" type="com.base.dao.entity.Menu" >
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="code" property="code" jdbcType="VARCHAR" />
+    <result column="title" property="title" jdbcType="VARCHAR" />
+    <result column="parent_id" property="parentId" jdbcType="INTEGER" />
+    <result column="href" property="href" jdbcType="VARCHAR" />
+    <result column="icon" property="icon" jdbcType="VARCHAR" />
+    <result column="type" property="type" jdbcType="CHAR" />
+    <result column="order_num" property="orderNum" jdbcType="INTEGER" />
+    <result column="description" property="description" jdbcType="VARCHAR" />
+    <result column="path" property="path" jdbcType="VARCHAR" />
+    <result column="enabled" property="enabled" jdbcType="CHAR" />
+    <result column="crt_time" property="crtTime" jdbcType="TIMESTAMP" />
+    <result column="crt_user" property="crtUser" jdbcType="VARCHAR" />
+    <result column="crt_name" property="crtName" jdbcType="VARCHAR" />
+    <result column="crt_host" property="crtHost" jdbcType="VARCHAR" />
+    <result column="upd_time" property="updTime" jdbcType="TIMESTAMP" />
+    <result column="upd_user" property="updUser" jdbcType="VARCHAR" />
+    <result column="upd_name" property="updName" jdbcType="VARCHAR" />
+    <result column="upd_host" property="updHost" jdbcType="VARCHAR" />
+    <result column="attr1" property="attr1" jdbcType="VARCHAR" />
+    <result column="attr2" property="attr2" jdbcType="VARCHAR" />
+    <result column="attr3" property="attr3" jdbcType="VARCHAR" />
+    <result column="attr4" property="attr4" jdbcType="VARCHAR" />
+    <result column="attr5" property="attr5" jdbcType="VARCHAR" />
+    <result column="attr6" property="attr6" jdbcType="VARCHAR" />
+    <result column="attr7" property="attr7" jdbcType="VARCHAR" />
+    <result column="attr8" property="attr8" jdbcType="VARCHAR" />
+  </resultMap>
+  <select id="selectMenuByAuthorityId" resultMap="BaseResultMap">
+    select t.* from base_resource_authority ra
+    inner join base_menu t
+    on ra.resource_id = t.id
+    and ra.authority_id = #{authorityId}
+    and ra.authority_type = #{authorityType}
+    and ra.resource_type = 'menu'
+  </select>
+    <select id="selectAuthorityMenuByUserId" resultMap="BaseResultMap">
+     select distinct t.* from base_resource_authority ra
+    inner join base_menu t
+    on ra.resource_id = t.id
+    and ra.authority_id in (
+      select group_id from base_group_member bgm inner join base_group bg on bg.id = bgm.group_id where user_id = #{userId}
+      union select group_id from base_group_leader bgl inner join base_group bg on bg.id = bgl.group_id where user_id = #{userId}
+    )
+    and ra.authority_type = 'group'
+    and ra.resource_type = 'menu'
+    order by t.order_num
+  </select>
+    <select id="selectAuthoritySystemByUserId" resultMap="BaseResultMap">
+        select distinct t.* from base_resource_authority ra
+        inner join base_menu t
+        on ra.resource_id = t.id
+        and ra.authority_id in (
+        select group_id from base_group_member where user_id = #{userId}
+        union select group_id from base_group_leader where user_id = #{userId}
+        )
+        and ra.authority_type = 'group'
+        and ra.resource_type = 'menu'
+        where t.parent_id = -1
+    </select>
+</mapper>
