@@ -20,7 +20,7 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 @EnableCircuitBreaker
 @EnableHystrix
 @EnableScheduling
-@MapperScan(basePackages="com.base.dao.mapper")
+@MapperScan(basePackages={"com.base.dao.mapper","com.base.dao.pdf.mapper",})
 @EnableConfigurationProperties({
     FileStorageProperties.class
 })

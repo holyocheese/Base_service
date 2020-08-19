@@ -16,7 +16,7 @@
         </plugin>
 
         <jdbcConnection driverClass="com.mysql.jdbc.Driver"
-                        connectionURL="jdbc:mysql://localhost:3306/e_wheel?useUnicode=true&amp;characterEncoding=UTF8"
+                        connectionURL="jdbc:mysql://localhost:3306/osaka?useUnicode=true&amp;characterEncoding=UTF8"
                         userId="root"
                         password="123456">
         </jdbcConnection>
@@ -37,7 +37,8 @@
         <!-- <table tableName="base_group_type" domainObjectName="GroupType"></table> -->
         <!-- <table tableName="base_menu" domainObjectName="Menu"></table> -->
         <!-- <table tableName="base_resource_authority" domainObjectName="ResourceAuthority"></table> -->
-        <table tableName="base_user" domainObjectName="User"></table>
+        <table tableName="pdf_linedata" domainObjectName="PdfLinedata"></table>
+        <table tableName="pdf" domainObjectName="Pdf"></table>
         
         
     </context>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.base.dao.pdf.mapper.PdfLinedataMapper" >
+  <resultMap id="BaseResultMap" type="com.base.dao.pdf.entity.PdfLinedata" >
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="pdf_id" property="pdfId" jdbcType="INTEGER" />
+    <result column="y_begin" property="yBegin" jdbcType="REAL" />
+    <result column="x_begin" property="xBegin" jdbcType="REAL" />
+    <result column="x_end" property="xEnd" jdbcType="REAL" />
+    <result column="text" property="text" jdbcType="VARCHAR" />
+  </resultMap>
+</mapper>
