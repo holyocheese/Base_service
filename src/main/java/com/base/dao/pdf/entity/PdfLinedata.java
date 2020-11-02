@@ -21,6 +21,9 @@ public class PdfLinedata {
 
     private String text;
 
+    @Column(name = "is_key")
+    private Integer isKey;
+
     /**
      * @return id
      */
@@ -103,5 +106,19 @@ public class PdfLinedata {
      */
     public void setText(String text) {
         this.text = text;
+    }
+
+    /**
+     * @return is_key
+     */
+    public Integer getIsKey() {
+        return isKey;
+    }
+
+    /**
+     * @param isKey
+     */
+    public void setIsKey(Integer isKey) {
+        this.isKey = isKey;
     }
 }

@@ -313,11 +313,11 @@
 		    <artifactId>jbig2-imageio</artifactId>
 		    <version>3.0.0</version>
 		</dependency>
-<!-- 		<dependency>
+		<dependency>
 		    <groupId>com.itextpdf</groupId>
 		    <artifactId>itextpdf</artifactId>
 		    <version>5.5.13.1</version>
-		</dependency> -->
+		</dependency>
 		<dependency>
 		    <groupId>com.itextpdf</groupId>
 		    <artifactId>cleanup</artifactId>

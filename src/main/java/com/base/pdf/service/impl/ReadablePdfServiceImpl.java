@@ -52,9 +52,9 @@ public class ReadablePdfServiceImpl implements ReadablePdfService {
 	    	float lastX = Float.parseFloat("0.0");
 	        for (TextPosition text : textPositions){
 	        	//上半部
-	        	if(Float.compare(lastLineY, Float.parseFloat("120"))>0){
-	        		return;
-	        	}
+//	        	if(Float.compare(lastLineY, Float.parseFloat("420"))>0){
+//	        		return;
+//	        	}
 	        	if(first==0){
 	        		pdfLinedata.setxBegin(pdfLinedata.getxBegin()==null?text.getXDirAdj():pdfLinedata.getxBegin());
 	        		pdfLinedata.setText(pdfLinedata.getText()==null?text.getUnicode():pdfLinedata.getText()+text.getUnicode());

@@ -1,15 +1,28 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.base.dao.pdf.mapper.PdfLinedataMapper" >
-  <resultMap id="BaseResultMap" type="com.base.dao.pdf.entity.PdfLinedata" >
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.base.dao.pdf.mapper.PdfLinedataMapper">
+  <resultMap id="BaseResultMap" type="com.base.dao.pdf.entity.PdfLinedata">
     <!--
       WARNING - @mbg.generated
     -->
-    <id column="id" property="id" jdbcType="INTEGER" />
-    <result column="pdf_id" property="pdfId" jdbcType="INTEGER" />
-    <result column="y_begin" property="yBegin" jdbcType="REAL" />
-    <result column="x_begin" property="xBegin" jdbcType="REAL" />
-    <result column="x_end" property="xEnd" jdbcType="REAL" />
-    <result column="text" property="text" jdbcType="VARCHAR" />
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="pdf_id" jdbcType="INTEGER" property="pdfId" />
+    <result column="y_begin" jdbcType="REAL" property="yBegin" />
+    <result column="x_begin" jdbcType="REAL" property="xBegin" />
+    <result column="x_end" jdbcType="REAL" property="xEnd" />
+    <result column="text" jdbcType="VARCHAR" property="text" />
+    <result column="is_key" jdbcType="INTEGER" property="isKey" />
+  </resultMap>
+  <resultMap id="BaseResultMap" type="com.base.dao.pdf.entity.PdfLinedata">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="pdf_id" jdbcType="INTEGER" property="pdfId" />
+    <result column="y_begin" jdbcType="REAL" property="yBegin" />
+    <result column="x_begin" jdbcType="REAL" property="xBegin" />
+    <result column="x_end" jdbcType="REAL" property="xEnd" />
+    <result column="text" jdbcType="VARCHAR" property="text" />
+    <result column="is_key" jdbcType="INTEGER" property="isKey" />
   </resultMap>
 </mapper>
