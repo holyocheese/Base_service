@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -17,7 +18,9 @@ public class PdfLineDataController  extends BaseController<PdfLineDataBiz, PdfLi
 
 	@RequestMapping(value = "/pdfList", method = RequestMethod.GET)
     @ResponseBody
-    public List<PdfLinedata> list(Integer id) {
-        return baseBiz.selectByPdfId(id);
+    public List<PdfLinedata> list(@RequestParam(value="id")Integer id,
+    		@RequestParam(value="positionX",required=false)Float positionX,
+    		@RequestParam(value="positionY",required=false)Float positionY) {
+        return baseBiz.selectByPdfId(id,positionX,positionY);
     }
 }
