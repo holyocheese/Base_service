@@ -12,6 +12,12 @@ public class Pdf {
     private String path;
 
     /**
+     * ' '
+     */
+    @Column(name = "set_name")
+    private String setName;
+
+    /**
      * @return id
      */
     public Integer getId() {
@@ -51,5 +57,23 @@ public class Pdf {
      */
     public void setPath(String path) {
         this.path = path;
+    }
+
+    /**
+     * 获取' '
+     *
+     * @return set_name - ' '
+     */
+    public String getSetName() {
+        return setName;
+    }
+
+    /**
+     * 设置' '
+     *
+     * @param setName ' '
+     */
+    public void setSetName(String setName) {
+        this.setName = setName;
     }
 }

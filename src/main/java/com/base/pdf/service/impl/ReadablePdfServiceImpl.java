@@ -52,7 +52,7 @@ public class ReadablePdfServiceImpl implements ReadablePdfService {
 	    	float lastX = Float.parseFloat("0.0");
 	        for (TextPosition text : textPositions){
 	        	//上半部
-//	        	if(Float.compare(lastLineY, Float.parseFloat("420"))>0){
+//	        	if(Float.compare(lastLineY, Float.parseFloat("820"))>0){
 //	        		return;
 //	        	}
 	        	if(first==0){

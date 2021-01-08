@@ -20,7 +20,8 @@ public class PdfLineDataController  extends BaseController<PdfLineDataBiz, PdfLi
     @ResponseBody
     public List<PdfLinedata> list(@RequestParam(value="id")Integer id,
     		@RequestParam(value="positionX",required=false)Float positionX,
-    		@RequestParam(value="positionY",required=false)Float positionY) {
-        return baseBiz.selectByPdfId(id,positionX,positionY);
+    		@RequestParam(value="positionY",required=false)Float positionY,
+    		@RequestParam(value="type",required=false)String type) {
+        return baseBiz.selectByPdfId(id,positionX,positionY,type);
     }
 }

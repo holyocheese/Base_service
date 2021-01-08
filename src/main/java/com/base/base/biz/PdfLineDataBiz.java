@@ -15,11 +15,11 @@ import tk.mybatis.mapper.entity.Example;
 @Transactional(rollbackFor = Exception.class)
 public class PdfLineDataBiz extends BaseBiz<PdfLinedataMapper, PdfLinedata> {
 
-	public List<PdfLinedata> selectByPdfId(Integer id,Float positionX,Float positionY){
+	public List<PdfLinedata> selectByPdfId(Integer id,Float positionX,Float positionY,String type){
 		Example example = new Example(PdfLinedata.class);
         Example.Criteria criteria = example.createCriteria();
         criteria.andEqualTo("pdfId", id);
-        if(positionX==null&&positionY==null){
+        if(positionX==null&&positionY==null&&type=="breath"){
         	criteria.andLessThan("yBegin", 120);
         }
         if(positionX!=null){
