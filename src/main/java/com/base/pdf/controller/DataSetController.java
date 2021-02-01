@@ -25,4 +25,14 @@ public class DataSetController {
 		readablePdfService.convertPdfIntoDataSet(path);
 		return null;
 	}
+	
+	//路径下的pdf存到数据库
+	@RequestMapping(value = "/getTableJsonById", method = RequestMethod.GET)
+    public MsgVo<String> getTableJsonById(@RequestParam Integer id) throws IOException {
+		MsgVo<String> msgvo = new MsgVo<String>();
+		msgvo.setStatus(200);
+		msgvo.setMessage("OK");
+		msgvo.setData(readablePdfService.getTableJsonById(id));
+		return msgvo;
+	}
 }

@@ -24,6 +24,11 @@ public class PdfLinedata {
     @Column(name = "is_key")
     private Integer isKey;
 
+    private String type;
+
+    @Column(name = "table_data_type")
+    private String tableDataType;
+
     /**
      * @return id
      */
@@ -120,5 +125,33 @@ public class PdfLinedata {
      */
     public void setIsKey(Integer isKey) {
         this.isKey = isKey;
+    }
+
+    /**
+     * @return type
+     */
+    public String getType() {
+        return type;
+    }
+
+    /**
+     * @param type
+     */
+    public void setType(String type) {
+        this.type = type;
+    }
+
+    /**
+     * @return table_data_type
+     */
+    public String getTableDataType() {
+        return tableDataType;
+    }
+
+    /**
+     * @param tableDataType
+     */
+    public void setTableDataType(String tableDataType) {
+        this.tableDataType = tableDataType;
     }
 }

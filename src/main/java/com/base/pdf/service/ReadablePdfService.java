@@ -2,8 +2,6 @@ package com.base.pdf.service;
 
 import java.io.IOException;
 
-import com.base.model.vo.MsgVo;
-
 
 public interface ReadablePdfService {
 
@@ -12,4 +10,6 @@ public interface ReadablePdfService {
 	
 	//目录下的特定pdf转换为data（根据间隔）
 	void convertPdfIntoDataSet(String path) throws IOException;
+	
+	String getTableJsonById(Integer id) throws IOException;
 }

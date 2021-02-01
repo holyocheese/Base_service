@@ -11,12 +11,12 @@ import org.apache.pdfbox.text.TextPosition;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.base.base.biz.PdfLineDataBiz;
 import com.base.dao.pdf.entity.Pdf;
 import com.base.dao.pdf.entity.PdfLinedata;
 import com.base.dao.pdf.mapper.PdfLinedataMapper;
 import com.base.dao.pdf.mapper.PdfMapper;
 import com.base.pdf.service.ReadablePdfService;
-
 
 @Service
 public class ReadablePdfServiceImpl implements ReadablePdfService {
@@ -25,6 +25,8 @@ public class ReadablePdfServiceImpl implements ReadablePdfService {
 	private PdfMapper pdfMapper;
 	@Autowired
 	private PdfLinedataMapper pdfLinedataMapper;
+	@Autowired
+	private PdfLineDataBiz pdfLineDataBiz;
 	
 	Integer count = 0;
 	
@@ -48,13 +50,15 @@ public class ReadablePdfServiceImpl implements ReadablePdfService {
 	    {
 	    	int first = 0;
 	    	float lastLineY = textPositions.get(0).getYDirAdj();
+	    	float lastLineX = textPositions.get(0).getXDirAdj();
 	    	PdfLinedata pdfLinedata = new PdfLinedata();
-	    	float lastX = Float.parseFloat("0.0");
+	    	float lastX = Float.parseFloat("18.0");
 	        for (TextPosition text : textPositions){
-	        	//上半部
-//	        	if(Float.compare(lastLineY, Float.parseFloat("820"))>0){
-//	        		return;
-//	        	}
+	        	//去掉表格部分
+	        	if(Float.compare(lastLineY, Float.parseFloat("210"))>0&&Float.compare(lastLineX, Float.parseFloat("290"))>0){
+	        		return;
+	        	}
+	        	System.out.println(text.getXDirAdj() + "--" + lastX);
 	        	if(first==0){
 	        		pdfLinedata.setxBegin(pdfLinedata.getxBegin()==null?text.getXDirAdj():pdfLinedata.getxBegin());
 	        		pdfLinedata.setText(pdfLinedata.getText()==null?text.getUnicode():pdfLinedata.getText()+text.getUnicode());
@@ -69,14 +73,16 @@ public class ReadablePdfServiceImpl implements ReadablePdfService {
 	        			pdfLinedata.setText(text.getUnicode());
 	        			pdfLinedata.setxBegin(text.getXDirAdj());
 	        		}else{
-	        			pdfLinedata.setText(pdfLinedata.getText()+text.getUnicode());
+	        			//去掉特殊符号
+	        			if(!text.getUnicode().equals("：")){
+	        				pdfLinedata.setText(pdfLinedata.getText()+text.getUnicode());
+	        			}
 			            pdfLinedata.setxEnd(text.getWidthOfSpace()+text.getXDirAdj());
 	        		}
-	        		
 	        	}
 	        	//去掉空格
 	        	if(!StringUtils.isBlank(text.getUnicode())&&text.getWidthDirAdj()>=3){
-	        		lastX = text.getXDirAdj();
+	        		lastX = text.getXDirAdj() + text.getWidthDirAdj();
 	        	}
 	        	first++;
 	        	//读取
@@ -129,5 +135,12 @@ public class ReadablePdfServiceImpl implements ReadablePdfService {
 			
 		}
 
+	}
+
+
+
+	@Override
+	public String getTableJsonById(Integer id) throws IOException {
+		return pdfLineDataBiz.getTableJsonByPdfId(id);
 	}
 }
