@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.base.dao.pdf.mapper.PdfAreaMapper" >
+  <resultMap id="BaseResultMap" type="com.base.dao.pdf.entity.PdfArea" >
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <result column="pdf_set_name" property="pdfSetName" jdbcType="VARCHAR" />
+    <result column="y_begin" property="yBegin" jdbcType="REAL" />
+    <result column="y_end" property="yEnd" jdbcType="REAL" />
+    <result column="x_begin" property="xBegin" jdbcType="REAL" />
+    <result column="x_end" property="xEnd" jdbcType="REAL" />
+    <result column="area_type" property="areaType" jdbcType="VARCHAR" />
+    <result column="table_data_type" property="tableDataType" jdbcType="VARCHAR" />
+  </resultMap>
+</mapper>
